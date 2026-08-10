@@ -11,17 +11,21 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.walkertracker.ui.screens.AuthScreen
 import com.example.walkertracker.ui.theme.WalkerTrackerTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        // Эта функция делает интерфейс "под обрез" (как в современных приложениях)
         enableEdgeToEdge()
+
         setContent {
             WalkerTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
+                    // Заменяем Greeting(...) на AuthScreen(...)
+                    AuthScreen(
                         modifier = Modifier.padding(innerPadding)
                     )
                 }
