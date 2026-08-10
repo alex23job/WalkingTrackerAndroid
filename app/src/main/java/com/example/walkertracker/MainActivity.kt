@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.example.walkertracker.data.repository.AuthRepository
 import com.example.walkertracker.ui.screens.AuthScreen
 import com.example.walkertracker.ui.theme.WalkerTrackerTheme
 
@@ -21,12 +22,16 @@ class MainActivity : ComponentActivity() {
         // Эта функция делает интерфейс "под обрез" (как в современных приложениях)
         enableEdgeToEdge()
 
+        // Создаем экземпляр репозитория один раз
+        val repository = AuthRepository()
+
         setContent {
             WalkerTrackerTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
                     // Заменяем Greeting(...) на AuthScreen(...)
                     AuthScreen(
-                        modifier = Modifier.padding(innerPadding)
+                        modifier = Modifier.padding(innerPadding),
+                        authRepository = repository
                     )
                 }
             }
